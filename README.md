@@ -14,7 +14,13 @@ To get started:
 1. Clone this git repository
 2. Configure media and downloads volumes in ./docker-compose.yml
 3. (Optional) Create entries for subdomains in your local DNS server for radarr, sonarr, etc .containarr.lan and use the alternative index.html in ./build/nginx
-4. Do stuff
+4. That's it. Visit http://localhost/ to get started. This app is served over port 80 by default, you can change this in the compose file. Apps are internally routed/proxied.
+
+
+Note: Prowlarr and Readarr are based off nightly/development builds at this time.
+
+
+Easily remove modules by commenting/removing them from the docker-compose.yml file i.e. to remove Readarr, simply delete the entire Readarr service from the yml file. 
 
 
 
