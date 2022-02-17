@@ -54,7 +54,7 @@ services:
             - PGID=2500
             - UMASK=022
             - UMASK_SET=022
-            - TZ=USA/Portland
+            - TZ=UTC
             - WEBUI_PORT=8080
         volumes:
             - ./config/qbt:/config
@@ -70,7 +70,7 @@ services:
             - PGID=2500
             - UMASK=022
             - UMASK_SET=022
-            - TZ=USA/Portland
+            - TZ=UTC
         volumes:
             - ./config/sonarr:/config
             - media:/media #optional
@@ -86,7 +86,7 @@ services:
             - PGID=2500
             - UMASK=022
             - UMASK_SET=022
-            - TZ=USA/Portland
+            - TZ=UTC
         volumes:
             - ./config/radarr:/config
             - media:/media #optional
@@ -102,7 +102,7 @@ services:
             - PGID=2500
             - UMASK=022
             - UMASK_SET=022
-            - TZ=USA/Portland
+            - TZ=UTC
         volumes:
             - ./config/readarr:/config
             - media:/media
@@ -118,7 +118,7 @@ services:
             - PGID=2500
             - UMASK=022
             - UMASK_SET=022
-            - TZ=USA/Portland
+            - TZ=UTC
         volumes:
             - ./config/prowlarr:/config
 
@@ -132,7 +132,7 @@ services:
             - PGID=2500
             - UMASK=022
             - UMASK_SET=022
-            - TZ=USA/Portland
+            - TZ=UTC
             - AUTO_UPDATE=true #optional
         volumes:
             - ./config/jackett:/config
@@ -147,7 +147,7 @@ services:
             - PGID=2500
             - UMASK=022
             - UMASK_SET=022
-            - TZ=USA/Portland
+            - TZ=UTC
         volumes:
             - ./config/deemix:/config
             - downloads:/downloads
