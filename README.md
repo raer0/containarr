@@ -28,7 +28,10 @@ to Quentin McGaw for their work on Gluetun.
   6. Visit ```http://{SERVER-IP}:8080/``` and configure qbittorrent (Make sure to enable reverse proxy settings under web ui)
   8. Configure your -arr stack - http://localhost:PORT/ (ports documented in compose file comments) allows your containers to communicate.
   9. Assuming all goes well, use ```docker compose down; docker compose up -d``` to get going.
- 
+
+
+# Configuring storage
+Storage configuration can be handled numerous ways. By default, we create two named volumes "media" and "downloads", but don't attach them to anything so your downloads and media libraries will be stored locally by docker. This is fine for testing, but in most cases you'll want to point this at your library. Inside the compose.yaml there are commented out lines for each named volume that can be used to configure a connection to a CIFS/SMB fileshare. you could also mount your media library to the docker volume's folder in /var/lib/docker/volumes. I personally use CIFS.
 
 # HELP! This is incredibly confusing!
 Don't worry! I'm working on that. This should be fire and forget, and I intend to make it that way so look out for features such as:
@@ -44,4 +47,6 @@ This was initially a quick-n-dirty public dump of a compose app i threw together
 
 
 # HELP! Things have gone horribly wrong!
-Open an issue! I don't have an FAQ or anything to work with in that regard because nobody has had any issues yet ;)
+Please open an issue and I'll get on it!
+
+
