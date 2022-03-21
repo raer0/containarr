@@ -2,6 +2,10 @@
 
 Containarr is a quick and conveneint way to run -arr apps + a torrent client behind a VPN. This project allows you to get up and running with these tools in minutes and is designed to be easily accessible.
 
+### SPECIAL THANK YOU
+to Quentin McGaw for their work on Gluetun. 
+- https://github.com/qdm12/gluetun
+
 # Getting started
 
 ### Prerequisites:
