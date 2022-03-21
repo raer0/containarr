@@ -30,12 +30,14 @@ to Quentin McGaw for their work on Gluetun.
   9. Assuming all goes well, use ```docker compose down; docker compose up -d``` to get going.
  
 
-# What if I'm a noob and don't know **** about docker?
+# HELP! This is incredibly confusing!
 Don't worry! I'm working on that. This should be fire and forget, and I intend to make it that way so look out for features such as:
 - Install script
 - Automatic installation of Docker/Docker-compose
 - Guided configuration process
-... and more! 
+
+
+... and more! This was initially a quick-n-dirty public dump of a compose app i threw together in a few hours based off some lessons learned from running my -arr stack behind a reverse proxy so I apologize for the current state of things. It was never actually designed to be used by anyone but me, and I don't really need a guided install process. However, this is a perfect opportunity to dip my feet into open source and collaborative programming so I've decided to put more work into this project.
 
 
 # HELP! Things have gone horribly wrong!
