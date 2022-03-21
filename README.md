@@ -1,4 +1,4 @@
-# HOLD UP!
+# 🚧🚧HOLD UP!🚧🚧
 This is pre 1.0 software. It might be unstable, unintuitive in some aspects, or difficult to configure. I'm still working on identifying and correcting issues. If you encounter one, please open an issue on this repo so that I may help resolve it.
 
 # Containarr? What's that?
