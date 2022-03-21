@@ -1,4 +1,33 @@
-Containarr is a ready-to-configure, easy to deploy docker-compose file for quickly and easily getting up and running with the -arr stack (Radarr, Sonarr, Jackett, bittorrent, etc).
+# Containarr? What's that?
+
+Containarr is a quick and conveneint way to run -arr apps + a torrent client behind a VPN. This project allows you to get up and running with these tools in minutes and is designed to be easily accessible.
+
+# Getting started
+
+### Prerequisites:
+  - An intermediate understanding of Docker and docker-compose and how to configure a compose file.
+  - A working docker installation
+  - An open vpn compatible VPN subsription
+
+### Ok, let's go!
+  1. Clone this repo or download the latest release.
+  2. Inside the docker-compose.yml file, configure the directories for your media and downloads volumes.
+  3. Ensure port 8080:8080 is uncommented under service: gluetun (On your first run only)
+  4. CD to this folder from a terminal and use ```docker compose up``` to monitor for errors while configuring.
+  6. Visit ```http://{SERVER-IP}:8080/``` and configure qbittorrent (Make sure to enable reverse proxy settings under web ui)
+  8. Configure your -arr stack - http://localhost:PORT/ (ports documented in compose file comments) allows your containers to communicate.
+  9. Assuming all goes well, use ```docker compose down; docker compose up -d``` to get going.
+ 
+
+# What if I'm a noob and don't know **** about docker?
+Don't worry! I'm working on that. Accessibility will be the next main focus on this project. I have a lot of things on my plate, however - so if you have trouble, please open an issue, or even pr. If this gains any traction (i.e. I get emails about it) I will definitely take a look at it and start working on it some more! 
+In the meantime, (20th March, 2022) this project isn't 100% noob friendly - so people coming from Reddit or google, beware!
+
+
+# HELP! Things have gone horribly wrong!
+Open an issue! I don't have an FAQ or anything to work with in that regard because nobody has had any issues yet ;)
+
+<!-- Containarr is a ready-to-configure, easy to deploy docker-compose file for quickly and easily getting up and running with the -arr stack (Radarr, Sonarr, Jackett, bittorrent, etc).
 
 With minimal configuration, you can easily deploy the -arr stack behind a VPN of your choice and connect it to storage.
 
@@ -22,9 +51,7 @@ Note: Prowlarr and Readarr are based off nightly/development builds at this time
 
 Easily remove modules by commenting/removing them from the docker-compose.yml file i.e. to remove Readarr, simply delete the entire Readarr service from the yml file. 
 
+ -->
 
+<!-- Disclaimer: This is for people already somewhat familiar with docker looking to set up -arr apps and a torrent client behind a vpn quickly. Its designed as more of a template to be tweaked. -->
 
-Disclaimer: This is for people already somewhat familiar with docker looking to set up -arr apps and a torrent client behind a vpn quickly. Its designed as more of a template to be tweaked.
-
-
-Tentative plans: trim fat and merge images?
