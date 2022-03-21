@@ -145,9 +145,9 @@ services:
         environment:
             - PUID=2500
             - PGID=2500
-            - UMASK=022
             - UMASK_SET=022
             - TZ=UTC
+            - DEEMIX_SINGLE_USER=true
         volumes:
             - ./config/deemix:/config
             - downloads:/downloads
