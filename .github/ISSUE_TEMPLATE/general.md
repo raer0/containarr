@@ -2,6 +2,7 @@
 name: General
 about: Please use this form for all other issues.
 title: "[GENERAL]"
+labels: unassigned
 assignees: ray-rock
 
 ---
