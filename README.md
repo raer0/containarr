@@ -1,5 +1,7 @@
 # 🚧🚧HOLD UP!🚧🚧
-This is pre 1.0 software. It might be unstable, unintuitive in some aspects, or difficult to configure. I'm still working on identifying and correcting issues. If you encounter one, please open an issue on this repo so that I may help resolve it.
+This is pre 1.0. It might be unstable, unintuitive in some aspects, or difficult to configure. I'm still working on identifying and correcting issues. If you encounter one, please open an issue on this repo so that I may help resolve it.
+
+
 
 # Containarr? What's that?
 
@@ -13,7 +15,8 @@ to Quentin McGaw for their work on Gluetun.
 
 ### IMPORTANT
   - Please check GLUETUN above for information on configuring your VPN.
-
+  - Until v0.1.2, you will need to reconfigure the default volume setup. Check issue #8 (https://github.com/ray-rock/containarr/issues/8) for more info.
+ 
 ### Prerequisites:
   - An intermediate understanding of Docker and docker-compose and how to configure a compose file.
   - A working docker installation
