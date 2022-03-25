@@ -1,31 +1,48 @@
-#Containarr docker-compose file. With minimal configuration, this file will spin up everything you need to start using
-#radarr, sonarr, readarr, prowlarr, jackett, deemix, and qbittorrent - all sent neatly through gluetun to a vpn of your choice.
-version: '3'
+---
+###
+# Check https://github.com/ray-rock/containarr/wiki for more information/documentation. If you run into an issue
+# not covered in the comments or documents, please open a discussion or an issue at https://github.com/ray-rock/containarr
+###
+version: '3.8'
+
+###
+# These are docker volumes. Most people only need a single data volume. This volume can be local, or somewhere else... Example SMB config provided below.
+# If you're on a gnu/linux distro, you may need to install cifs-utils. See https://github.com/ray-rock/containarr/wiki for more info.
+###
 volumes:
-    downloads:
-        # driver_opts:
-        #     type: <CONFIGURE>
-        #     o: "<CONFIGURE>"
-        #     device: "<CONFIGURE>"
-    media:
-        # driver_opts:
-        #     type: <CONFIGURE>
-        #     o: "<CONFIGURE>"
-        #     device: "<CONFIGURE>"
+    data:
+    ### PROVIDE SPECIFIC EXAMPLES FOR SMB
+    # downloads: # Use this configuration if you know what you're doing! The default
+    #     # driver_opts: # use driver_opts if you're going to configure SMB or something...
+    #     #     type: <CONFIGURE>
+    #     #     o: "<CONFIGURE>"
+    #     #     device: "<CONFIGURE>"
+    # media:
+    #     # driver_opts:
+    #     #     type: <CONFIGURE>
+    #     #     o: "<CONFIGURE>"
+    #     #     device: "<CONFIGURE>"
 
 services:
+    ###
+    # This is the portal where you access all of your arr!
+    ###
+    portal:
+        image: localhost.local/containarr/portal
+        container_name: portal
+        build: ./build/nginx/.
+        network_mode: "service:gluetun"
 
+    ###
+    # This is the VPN provider. Anything routed through this will be tunneled through your VPN.
+    ###
     gluetun:
-        restart: on-failure
         image: qmcgaw/gluetun:latest
         container_name: gluetun
         cap_add:
             - NET_ADMIN
-        environment:
-            - VPNSP=                    #vpn info goes here, see gluetun docs for what to put here to sign in and use your vpn.
-            - OPENVPN_USER=
-            - OPENVPN_PASSWORD=
-            - SERVER_HOSTNAME=
+        env_file:
+            - config/gluetun/vpn-config.env                        # See https://github.com/qdm12/gluetun/wiki for info on configuring your vpn.
         ports:
             - 80:80         #nginx reverse proxy
             #- 8080:8080   #qbittorrent
@@ -36,18 +53,12 @@ services:
             #- 8686:8686   #lidarr
             #- 9117:9117   #jackett
             #- 6595:6595   #deemix
-
-    nginx:
-        network_mode: "service:gluetun"
-        build: /build/nginx/.
-        image: local.lan/containarr/nginx:latest
-        container_name: reverse-proxy
+        restart: always
 
     qbittorrent:
-        restart: on-failure
+        restart: always
         network_mode: "service:gluetun"
-        build: /build/qbittorrent/.
-        image: local.lan/containarr/qbittorrent:latest
+        image: lscr.io/linuxserver/qbittorrent
         container_name: qbittorrent
         environment:
             - PUID=2500
@@ -58,7 +69,22 @@ services:
             - WEBUI_PORT=8080
         volumes:
             - ./config/qbt:/config
-            - downloads:/downloads
+            - data:/downloads
+
+    deemix:
+        restart: always
+        network_mode: "service:gluetun"
+        image: registry.gitlab.com/bockiii/deemix-docker
+        container_name: Deemix
+        environment:
+            - PUID=2500
+            - PGID=2500
+            - UMASK_SET=022
+            - TZ=UTC
+            - DEEMIX_SINGLE_USER=true
+        volumes:
+            - ./config/deemix:/config
+            - data:/downloads
 
     sonarr:
         restart: unless-stopped
@@ -73,11 +99,11 @@ services:
             - TZ=UTC
         volumes:
             - ./config/sonarr:/config
-            - media:/media #optional
-            - downloads:/downloads:ro #optional
+            - data:/media
+
 
     radarr:
-        restart: unless-stopped
+        restart: always
         network_mode: "service:gluetun"
         image: lscr.io/linuxserver/radarr
         container_name: radarr
@@ -89,27 +115,10 @@ services:
             - TZ=UTC
         volumes:
             - ./config/radarr:/config
-            - media:/media #optional
-            - downloads:/downloads:ro #optional
-
-    readarr:
-        restart: unless-stopped
-        network_mode: "service:gluetun"
-        image: ghcr.io/linuxserver/readarr:nightly
-        container_name: readarr
-        environment:
-            - PUID=2500
-            - PGID=2500
-            - UMASK=022
-            - UMASK_SET=022
-            - TZ=UTC
-        volumes:
-            - ./config/readarr:/config
-            - media:/media
-            - downloads:/downloads:ro
+            - data:/media
 
     prowlarr:
-        restart: unless-stopped
+        restart: always
         network_mode: "service:gluetun"
         image: lscr.io/linuxserver/prowlarr:develop
         container_name: prowlarr
@@ -122,32 +131,33 @@ services:
         volumes:
             - ./config/prowlarr:/config
 
-    jackett:
-        restart: unless-stopped
-        network_mode: "service:gluetun"
-        image: lscr.io/linuxserver/jackett
-        container_name: jackett
-        environment:
-            - PUID=2500
-            - PGID=2500
-            - UMASK=022
-            - UMASK_SET=022
-            - TZ=UTC
-            - AUTO_UPDATE=true #optional
-        volumes:
-            - ./config/jackett:/config
+    # readarr:
+    #     restart: unless-stopped
+    #     network_mode: "service:gluetun"
+    #     image: ghcr.io/linuxserver/readarr:nightly
+    #     container_name: readarr
+    #     environment:
+    #         - PUID=2500
+    #         - PGID=2500
+    #         - UMASK=022
+    #         - UMASK_SET=022
+    #         - TZ=UTC
+    #     volumes:
+    #         - ./config/readarr:/config
+    #         - media:/media
+    #         - downloads:/downloads:ro
 
-    deemix:
-        restart: unless-stopped
-        network_mode: "service:gluetun"
-        image: registry.gitlab.com/bockiii/deemix-docker
-        container_name: Deemix
-        environment:
-            - PUID=2500
-            - PGID=2500
-            - UMASK_SET=022
-            - TZ=UTC
-            - DEEMIX_SINGLE_USER=true
-        volumes:
-            - ./config/deemix:/config
-            - downloads:/downloads
+    # jackett:
+    #     restart: unless-stopped
+    #     network_mode: "service:gluetun"
+    #     image: lscr.io/linuxserver/jackett
+    #     container_name: jackett
+    #     environment:
+    #         - PUID=2500
+    #         - PGID=2500
+    #         - UMASK=022
+    #         - UMASK_SET=022
+    #         - TZ=UTC
+    #         - AUTO_UPDATE=true #optional
+    #     volumes:
+    #         - ./config/jackett:/config
