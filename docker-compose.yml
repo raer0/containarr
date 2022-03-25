@@ -45,14 +45,14 @@ services:
             - config/gluetun/vpn-config.env                        # See https://github.com/qdm12/gluetun/wiki for info on configuring your vpn.
         ports:
             - 80:80         #nginx reverse proxy
-            #- 8080:8080   #qbittorrent
-            #- 8989:8989   #sonarr
-            #- 7878:7878   #radarr
-            #- 9696:9696   #prowlarr
+            - 8080:8080   #qbittorrent
+            - 8989:8989   #sonarr
+            - 7878:7878   #radarr
+            - 9696:9696   #prowlarr
             #- 8787:8787   #readarr
             #- 8686:8686   #lidarr
             #- 9117:9117   #jackett
-            #- 6595:6595   #deemix
+            - 6595:6595   #deemix
         restart: always
 
     qbittorrent:
