@@ -30,7 +30,7 @@ services:
     portal:
         image: localhost.local/containarr/portal
         container_name: portal
-        build: ./build/portal/.
+        build: build/portal/.
         network_mode: "service:gluetun"
 
     ###

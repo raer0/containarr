@@ -7,6 +7,7 @@ RUN apk --no-cache add \
     nginx \
     supervisor
 
+
 # Make and change ownership
 RUN mkdir -p /app
 RUN chown -R nobody.nobody /app && \
@@ -14,14 +15,17 @@ RUN chown -R nobody.nobody /app && \
     chown -R nobody.nobody /var/lib/nginx && \
     chown -R nobody.nobody /var/log/nginx
 
-# Copy config files for supervisor and nginx, then copy and chown html/app files
+
+# Copy config files for supervisor and nginx
 COPY config/supervisord/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY config/nginx/ /etc/nginx/
-COPY --chown=nobody app /app
 
-# Change user and default work dir
+
+# Change user and default work dir, copy over app
 USER nobody
+COPY --chown=nobody app /app
 WORKDIR /app
+
 
 # Expose the port nginx is reachable on
 EXPOSE 80
