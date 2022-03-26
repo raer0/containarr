@@ -12,7 +12,7 @@ html, body {
 }
 
 body {
-    background-image: url("/img/ship.jpg");
+    /* background-image: url("/img/ship.jpg"); */
     background-repeat: repeat-y;
     background-size: cover;
 }
