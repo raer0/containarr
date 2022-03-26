@@ -102,9 +102,13 @@ The default configuration should be suitable for most people. Advanced users may
 6. Once the command prompt settles, visit ```http://containarr.lan``` in your browser.
 7. If you see a menu, great! Now visit ```http://containarr.lan:8080``` and use ```usernamne: admin, password: adminadmin``` to log in to qbittorrent.
 8. Go to ```qbittorrent settings ➡️ web ui ➡️ security``` and **ensure that CSRF and CLICKJACKING PROTECTION are turned OFF**
-9. In your terminal window: ```Ctrl + C```
-10. Comment out ```port: - 8080:8080``` in docker-compose.yml, you no longer need to expose it.
+9. In your terminal window: ```Ctrl + C``` then ```docker compose down```
+10. Comment out ```services: gluetun: ports: - 8080:8080``` in docker-compose.yml, you no longer need to expose it.
 11. ```docker compose up -d``` and you should be good to go!
+
+### Part 3: Now what?
+
+You'll want to connect prowlarr and qbittorrent to radarr and sonarr, then configure your indexers in prowlarr. You'll also need to configure your ARL in deemix.
 
 
 # HELP! Things have gone horribly wrong!
