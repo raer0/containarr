@@ -1,6 +1,9 @@
 # ❗ Changelog ❗
 
 ## What's new?
+### v0.2.2
+- Added screenshot to readme
+
 ### v0.2.1
 - Fixed lacking documentation.
 

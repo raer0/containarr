@@ -6,10 +6,12 @@ This is pre 1.0. It might be unstable, unintuitive in some aspects, or difficult
 
 # Containarr? What's that?
 
-Containarr is a quick and conveneint way to run -arr apps + a torrent client behind a VPN. This project allows you to get up and running with these tools in minutes and is designed to be easily accessible.
+![Home screen](/.wiki/img/home.png?raw=true)
+
+Containarr is a quick and conveneint way to run -arr apps + a torrent client behind a VPN. It provides a simple interface to access them from. This project allows you to get up and running with these tools in minutes and is designed to be easily accessible.
 
 
-# Getting started v0.2.1
+# Getting started v0.2.2
 
 ## IMPORTANT
 - Visit ```https://github.com/qdm12/gluetun/wiki``` for information on configuring your VPN with gluetun.
