@@ -1,6 +1,9 @@
 # ❗ Changelog ❗
 
 ## What's new?
+### v0.2.1
+- Fixed lacking documentation.
+
 ### v0.2.0
 - Implemented self-signed SSL in the reverse proxy.
 - Changed to MIT license.
