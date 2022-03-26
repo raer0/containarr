@@ -17,6 +17,7 @@
 
 ### To-Do
 - Change exposed ports
+- Add SSL termination
 
 
 

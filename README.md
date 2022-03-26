@@ -94,21 +94,27 @@ Ensure containarr's host has a static IP, and that ports ```80, 443``` are not e
 The default configuration should be suitable for most people. Advanced users may customize ```docker-compose.yml``` if they so choose - I don't care, I'm not a cop.
 
 1. ```git clone https://github.com/ray-rock/containarr``` or download the latest release.
-2. Rename ```config/gluetun/vpn-config.env.sample``` to ```config/gluetun/vpn-config.env```
-3. Configure a VPN provider, login credentials, and servers in ```config/gluetun/vpn-config.env```.
+2. ```chown -R 2500:2500 containarr/data/```
+3. Rename ```config/gluetun/vpn-config.env.sample``` to ```config/gluetun/vpn-config.env```
+4. Configure a VPN provider, login credentials, and servers in ```config/gluetun/vpn-config.env```.
     - See [gluetun wiki](https://github.com/qdm12/gluetun/wiki) for more info on configuring your vpn provider.
-4. Open a terminal and navigate to your containarr folder.
-5. ```docker compose up```
-6. Once the command prompt settles, visit ```http://containarr.lan``` in your browser.
-7. If you see a menu, great! Now visit ```http://containarr.lan:8080``` and use ```usernamne: admin, password: adminadmin``` to log in to qbittorrent.
-8. Go to ```qbittorrent settings ➡️ web ui ➡️ security``` and **ensure that CSRF and CLICKJACKING PROTECTION are turned OFF**
-9. In your terminal window: ```Ctrl + C``` then ```docker compose down```
-10. Comment out ```services: gluetun: ports: - 8080:8080``` in docker-compose.yml, you no longer need to expose it.
-11. ```docker compose up -d``` and you should be good to go!
+5. Open a terminal and navigate to your containarr folder.
+6. ```docker compose up```
+7. Once the command prompt settles, visit ```http://containarr.lan``` in your browser.
+8. If you see a menu, great! Now visit ```http://containarr.lan:8080``` and use ```usernamne: admin, password: adminadmin``` to log in to qbittorrent.
+9. Go to ```qbittorrent settings ➡️ web ui ➡️ security``` and **ensure that CSRF and CLICKJACKING PROTECTION are turned OFF**
+10. In your terminal window: ```Ctrl + C``` then ```docker compose down```
+11. Comment out ```services: gluetun: ports: - 8080:8080``` in docker-compose.yml, you no longer need to expose it.
+12. ```docker compose up -d``` and you should be good to go!
 
 ### Part 3: Now what?
 
-You'll want to connect prowlarr and qbittorrent to radarr and sonarr, then configure your indexers in prowlarr. You'll also need to configure your ARL in deemix.
+#### Note:
+```localhost:PORT``` should do the trick on all configurations outlined below.
+
+- Connect radarr/sonarr to qbittorrent
+- Connect prowlarr to radarr/sonarr
+- Configure your data folders on each app.
 
 
 # HELP! Things have gone horribly wrong!
