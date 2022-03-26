@@ -58,8 +58,6 @@ services:
         #   - 6595:6595                        # deemix
         #   - 8989:8989                        # sonarr
         #   - 7878:7878                        # radarr
-        #   - 9696:9696                        # prowlarr
-        #   - 8787:8787                        # readarr
         #   - 9117:9117                        # jackett
         restart: always
 
@@ -159,40 +157,23 @@ services:
             - data:/media
             # - downloads:/downloads
             # - media:/media
-
-
     ###
-    #   Prowlarr: collect and organize movies. Uses linuxserver docker-prowlarr image.
-    #   https://github.com/Prowlarr/Prowlarr
-    #   https://hub.docker.com/r/linuxserver/prowlarr
-    #   https://github.com/linuxserver/docker-prowlarr
+    #   Jackett: index various trackers in one place.
+    #   https://github.com/Jackett/Jackett
+    #   https://hub.docker.com/r/linuxserver/jackett
+    #   https://github.com/linuxserver/docker-jackett
     ###
-    prowlarr:
-        restart: always
+    jackett:
+        restart: unless-stopped
         network_mode: "service:gluetun"
-        image: lscr.io/linuxserver/prowlarr:develop
-        container_name: prowlarr
+        image: lscr.io/linuxserver/jackett
+        container_name: jackett
         environment:
             - PUID=2500
             - PGID=2500
             - UMASK=022
             - UMASK_SET=022
             - TZ=UTC
+            - AUTO_UPDATE=true
         volumes:
-            - ./config/prowlarr:/config
-
-
-    # jackett:
-    #     restart: unless-stopped
-    #     network_mode: "service:gluetun"
-    #     image: lscr.io/linuxserver/jackett
-    #     container_name: jackett
-    #     environment:
-    #         - PUID=2500
-    #         - PGID=2500
-    #         - UMASK=022
-    #         - UMASK_SET=022
-    #         - TZ=UTC
-    #         - AUTO_UPDATE=true #optional
-    #     volumes:
-    #         - ./config/jackett:/config
+            - ./config/jackett:/config
