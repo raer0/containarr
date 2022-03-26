@@ -9,12 +9,13 @@ This is pre 1.0. It might be unstable, unintuitive in some aspects, or difficult
 Containarr is a quick and conveneint way to run -arr apps + a torrent client behind a VPN. This project allows you to get up and running with these tools in minutes and is designed to be easily accessible.
 
 
-# Getting started v0.1.2
+# Getting started v0.2.0
 
 ## IMPORTANT
 - Visit ```https://github.com/qdm12/gluetun/wiki``` for information on configuring your VPN with gluetun.
 - An understanding of docker, docker compose, and how to configure ```docker-compose.yml``` are helpful but hopefully not *necessary*. If you don't get docker, you should be able to use this with docker desktop. If you find info on using containarr lacking please open a discussion so I can figure out what to add to the wiki.
 - This is not intended to be exposed over a public IP. Ensure that containarr is only accessible on your private network.
+- If you're updating from v0.1.x, please ```docker compose down; docker image rm localhost.local/containarr/portal```
 
 
 
