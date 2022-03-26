@@ -9,7 +9,7 @@ This is pre 1.0. It might be unstable, unintuitive in some aspects, or difficult
 Containarr is a quick and conveneint way to run -arr apps + a torrent client behind a VPN. This project allows you to get up and running with these tools in minutes and is designed to be easily accessible.
 
 
-# Getting started v0.2.0
+# Getting started v0.2.1
 
 ## IMPORTANT
 - Visit ```https://github.com/qdm12/gluetun/wiki``` for information on configuring your VPN with gluetun.
@@ -109,6 +109,9 @@ The default configuration should be suitable for most people. Advanced users may
 12. ```docker compose up -d``` and you should be good to go!
 
 ### Part 3: Now what?
+
+- Visit ```https://containarr.lan``` in your browser.
+- Your browser will complain about an insecure connection because of the self-signed SSL certificate. Just bypass the complaints and "proceed anyway".
 
 #### Note:
 use ```localhost``` for any configurations which ask for an IP address.
