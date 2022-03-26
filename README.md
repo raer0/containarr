@@ -9,7 +9,7 @@ This is pre 1.0. It might be unstable, unintuitive in some aspects, or difficult
 Containarr is a quick and conveneint way to run -arr apps + a torrent client behind a VPN. This project allows you to get up and running with these tools in minutes and is designed to be easily accessible.
 
 ### SPECIAL THANK YOU
-to Quentin McGaw for their work on Gluetun. 
+to Quentin McGaw for their work on Gluetun.
 - https://github.com/qdm12/gluetun
 
 # Getting started
@@ -17,7 +17,7 @@ to Quentin McGaw for their work on Gluetun.
 ### IMPORTANT
   - Please check GLUETUN above for information on configuring your VPN.
   - Until v0.1.2, you will need to reconfigure the default volume setup. Check issue #8 (https://github.com/ray-rock/containarr/issues/8) for more info.
- 
+
 ### Prerequisites:
   - An intermediate understanding of Docker and docker-compose and how to configure a compose file.
   - A working docker installation
@@ -44,7 +44,7 @@ Don't worry! I'm working on that. This should be fire and forget, and I intend t
 - Guided configuration process
 
 
-... and more! 
+... and more!
 
 ### some info...
 This was initially a quick-n-dirty public dump of a compose app i threw together in a few hours based off some lessons learned from running my -arr stack behind a reverse proxy so I apologize for the current state of things. It was never actually designed to be used by anyone but me, and I don't really need a guided install process. However, this is a perfect opportunity to dip my feet into open source and collaborative programming so I've decided to put more work into this project.
@@ -54,3 +54,67 @@ This was initially a quick-n-dirty public dump of a compose app i threw together
 Please open an issue and I'll get on it!
 
 
+
+---
+
+
+
+# Getting started 2.0
+
+### IMPORTANT
+- Visit ```https://github.com/qdm12/gluetun/wiki``` for information on configuring your VPN with gluetun.
+- An understanding of docker, docker compose, and how to configure ```docker-compose.yml``` are helpful but hopefully not *necessary*. If you don't get docker, you should be able to use this with docker desktop. If you find info on using containarr lacking please open a discussion so I can figure out what to add to the wiki.
+- This is not intended to be exposed over a public IP. Ensure that containarr is only accessible on your private network.
+
+
+
+
+### Prerequisites:
+- A [pihole](https://github.com/pi-hole/pi-hole/#one-step-automated-install) or similar local DNS server are highly recommended. Without one, accessing containarr will require additional configuration which I don't support directly. Its certainly possible to use containarr without a DNS server, but it would probably take more work than simply setting up a pihole and adding the containarr subdomains to your pihole dns entries.
+- An openVPN compatible vpn subscription and associated credentials.
+- Latest versions of ```docker``` and ```docker compose``` on the machine you'll use to host containarr.
+    - For most people, I highly recommend [```docker desktop```](https://www.docker.com/products/docker-desktop/). Simply select your OS and follow the instructions provided.
+    - Windows users: [enable WSL2 and the backend for docker](https://docs.docker.com/desktop/windows/wsl/).
+    - Users with existing installations: if ```docker-compose``` causes issues, install as ```docker compose``` and try without the hyphen.
+        - As root user or with sudo (x86_64 arch):
+        ```
+            mkdir -p /root/.docker/cli-plugins
+
+            curl -SL https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 -o /root/.docker/cli-plugins/docker-compose
+
+            chmod +x /root/.docker/cli-plugins/docker-compose
+
+        ```
+
+## Ok, let's go!
+
+### Part 0: Static IP
+Ensure containarr's host has a static IP, and that ports ```80, 443``` are not exposed to the public internet.
+
+### Part 1: DNS entries
+
+#### TL;DR
+- By default, containarr requires a static IP and the following DNS/hosts file entries:
+    - containarr.lan
+    - deemix.containarr.lan
+    - qbt.containarr.lan
+    - sonarr.containarr.lan
+    - radarr.containarr.lan
+
+
+#### pihole
+
+
+#### hosts file
+
+
+
+### Part 2: Ths fun part
+
+The default configuration should be suitable for most people. Advanced users may customize ```docker-compose.yml``` if they, for example, use SMB shares for storage.
+
+1. ```git clone https://github.com/ray-rock/containarr``` or download the latest release.
+2. Rename ```config/gluetun/vpn-config.env.sample``` to ```config/gluetun/vpn-config.env```
+3. Configure VPN provider, login credentials, and servers in ```config/gluetun/vpn-config.env```.
+    - See [gluetun wiki](https://github.com/qdm12/gluetun/wiki) for more info on configuring your vpn provider.
+4.
