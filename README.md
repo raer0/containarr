@@ -26,7 +26,7 @@ Containarr is a quick and conveneint way to run -arr apps + a torrent client beh
     - For most people, I highly recommend [```docker desktop```](https://www.docker.com/products/docker-desktop/). Simply select your OS and follow the instructions provided.
     - Windows users: [enable WSL2 and the backend for docker](https://docs.docker.com/desktop/windows/wsl/).
     - Users with existing installations on GNU/Linux: if ```docker-compose``` causes issues, install as ```docker compose``` and try without the hyphen.
-        - As root user or with sudo (x86_64 arch):
+        - As root user or with sudo (x86_64 architecture):
         ```
             mkdir -p /root/.docker/cli-plugins
 
@@ -110,7 +110,7 @@ The default configuration should be suitable for most people. Advanced users may
 ### Part 3: Now what?
 
 #### Note:
-```localhost:PORT``` should do the trick on all configurations outlined below.
+use ```localhost``` for any configurations which ask for an IP address.
 
 - Connect radarr/sonarr to qbittorrent
 - Connect prowlarr to radarr/sonarr
@@ -119,3 +119,21 @@ The default configuration should be suitable for most people. Advanced users may
 
 # HELP! Things have gone horribly wrong!
 Please open an issue and I'll get on it!
+
+
+# Credits
+
+### gluetun
+Thank you to [@qdm12](https://github.com/qdm12) for their work on [gluetun](https://github.com/qdm12/gluetun).
+
+### linuxserver
+Thank you to [linuxserver.io](https://github.com/linuxserver) for their work on the docker containers used in this project.
+- [linuxserver/docker-qbittorrent](https://github.com/linuxserver/docker-qbittorrent)
+- [linuxserver/docker-sonarr](https://github.com/linuxserver/docker-sonarr)
+- [linuxserver/docker-radarr](https://github.com/linuxserver/docker-radarr)
+- [linuxserver/docker-prowlarr](https://github.com/linuxserver/docker-prowlarr)
+
+
+
+### Radarr Sonarr, and Prowlarr
+Thank you to all who contribute to [radarr](https://github.com/Radarr/Radarr), [sonarr](https://github.com/Sonarr/Sonarr), and [prowlarr](https://github.com/Prowlarr/Prowlarr).

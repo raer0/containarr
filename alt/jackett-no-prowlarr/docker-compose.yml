@@ -9,8 +9,8 @@ version: '3.8'
 # These are docker volumes. Most people only need a single data volume. This volume can be local, or somewhere else... Example SMB config provided below.
 # If you're on a gnu/linux distro, you may need to install cifs-utils. See https://github.com/ray-rock/containarr/wiki for more info.
 ###
-volumes:
-    data:               # Default. This is what you probably need. Uncomment and configure "driver_opts" for more options...
+#volumes:               # Don't use named volumes unless you know what you're doing...
+    #data:
         # driver_opts:
         #     type: cifs
         #     o: "guest"
@@ -58,6 +58,7 @@ services:
         #   - 6595:6595                        # deemix
         #   - 8989:8989                        # sonarr
         #   - 7878:7878                        # radarr
+        #   - 9696:9696                        # prowlarr
         #   - 9117:9117                        # jackett
         restart: always
 
@@ -83,7 +84,7 @@ services:
             - WEBUI_PORT=8080
         volumes:
             - ./config/qbt:/config
-            - data:/downloads
+            - ./data:/data
             # - downloads:/downloads
 
 
@@ -105,7 +106,7 @@ services:
             - DEEMIX_SINGLE_USER=true
         volumes:
             - ./config/deemix:/config
-            - data:/downloads
+            - ./data:/data
             # - downloads:/downloads
 
 
@@ -129,7 +130,7 @@ services:
             - TZ=UTC
         volumes:
             - ./config/sonarr:/config
-            - data:/media
+            - ./data:/data
             # - downloads:/downloads
             # - media:/media
 
@@ -154,26 +155,28 @@ services:
             - TZ=UTC
         volumes:
             - ./config/radarr:/config
-            - data:/media
+            - ./data:/data
             # - downloads:/downloads
             # - media:/media
-    ###
-    #   Jackett: index various trackers in one place.
-    #   https://github.com/Jackett/Jackett
-    #   https://hub.docker.com/r/linuxserver/jackett
-    #   https://github.com/linuxserver/docker-jackett
-    ###
-    jackett:
-        restart: unless-stopped
-        network_mode: "service:gluetun"
-        image: lscr.io/linuxserver/jackett
-        container_name: jackett
-        environment:
-            - PUID=2500
-            - PGID=2500
-            - UMASK=022
-            - UMASK_SET=022
-            - TZ=UTC
-            - AUTO_UPDATE=true
-        volumes:
-            - ./config/jackett:/config
+
+
+        ###
+        #   Jackett: index various trackers in one place.
+        #   https://github.com/Jackett/Jackett
+        #   https://hub.docker.com/r/linuxserver/jackett
+        #   https://github.com/linuxserver/docker-jackett
+        ###
+        jackett:
+            restart: unless-stopped
+            network_mode: "service:gluetun"
+            image: lscr.io/linuxserver/jackett
+            container_name: jackett
+            environment:
+                - PUID=2500
+                - PGID=2500
+                - UMASK=022
+                - UMASK_SET=022
+                - TZ=UTC
+                - AUTO_UPDATE=true
+            volumes:
+                - ./config/jackett:/config

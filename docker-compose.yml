@@ -180,19 +180,3 @@ services:
             - TZ=UTC
         volumes:
             - ./config/prowlarr:/config
-
-
-    # jackett:
-    #     restart: unless-stopped
-    #     network_mode: "service:gluetun"
-    #     image: lscr.io/linuxserver/jackett
-    #     container_name: jackett
-    #     environment:
-    #         - PUID=2500
-    #         - PGID=2500
-    #         - UMASK=022
-    #         - UMASK_SET=022
-    #         - TZ=UTC
-    #         - AUTO_UPDATE=true #optional
-    #     volumes:
-    #         - ./config/jackett:/config

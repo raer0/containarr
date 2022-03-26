@@ -8,11 +8,11 @@
 2. ~~ Changes default vpn routing, adds documentation for whether one should include their indexer or only tunnel qbittorrent. (#9) ~~
 3. ~~ Fix an issue where other containers might start before gluetun, leaving them networkless and unable to be used. (#10)~~
 4. moved vpn configuration to ```config/gluetun/vpn-config.env```
-5. Made changes to reverse proxy to make it functional
+5. Made changes to reverse proxy to make it functional (#19)
     - Added documentation on creating DNS entries for reverse proxy
 6. Massive improvements to documentation/readme
 
-<sup>*Stricken entries unfurled into larger issues. (#19)</sup>
+<sup>*Stricken entries unfurled into larger issues.</sup>
 
 
 ### To-Do

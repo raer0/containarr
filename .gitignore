@@ -11,6 +11,8 @@ config/*
 
 
 
-# Ignore any background images one might choose to use. 
+# Ignore any background images one might choose to use.
 
 build/portal/html/img/*
+
+notes.md
