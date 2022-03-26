@@ -137,3 +137,6 @@ Thank you to [linuxserver.io](https://github.com/linuxserver) for their work on 
 
 ### Radarr Sonarr, and Prowlarr
 Thank you to all who contribute to [radarr](https://github.com/Radarr/Radarr), [sonarr](https://github.com/Sonarr/Sonarr), and [prowlarr](https://github.com/Prowlarr/Prowlarr).
+
+### deemix-docker
+Thank you to @Bockiii for their contributions to this project, and their work on [deemix-docker](https://gitlab.com/Bockiii/deemix-docker)
