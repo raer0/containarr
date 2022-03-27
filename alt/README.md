@@ -1,6 +1,8 @@
 # ⚠️ WARNING ⚠️
 
-These aren't fully tested, but they *probably* work fine.
+~~These aren't fully tested, but they *probably* work fine.~~
+
+LOL no the f*** they don't. See #29
 
 
 
