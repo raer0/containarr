@@ -1,8 +1,11 @@
 # ❗ Changelog ❗
 
+
 ## Contributors
-@Bockiii - v0.1.1, #5
-@stevietv - v0.2.3, #8
+- @Bockiii ---> v0.1.1, #5
+- @stevietv ---> v0.2.3, #8
+
+
 
 ## What's new?
 ### v0.2.3
