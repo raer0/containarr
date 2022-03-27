@@ -86,7 +86,7 @@ services:
             - WEBUI_PORT=8080
         volumes:
             - ./config/qbt:/config
-            - ./data:/data
+            - ./data/qbittorrent:/data/qbittorrent
             # - downloads:/downloads
 
 
