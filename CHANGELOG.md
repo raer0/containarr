@@ -1,5 +1,9 @@
 # ❗ Changelog ❗
 
+## Contributors
+@Bockiii - v0.1.1, #5
+@stevietv - v0.2.3, #8
+
 ## What's new?
 ### v0.2.3
 - Addressed [this](https://github.com/ray-rock/containarr/pull/21#pullrequestreview-922297868) review, which was missed by @ray-rock before merging pr #21.
