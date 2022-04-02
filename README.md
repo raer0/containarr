@@ -11,7 +11,7 @@ This is pre 1.0. It might be unstable, unintuitive in some aspects, or difficult
 Containarr is a quick and conveneint way to run -arr apps + a torrent client behind a VPN. It provides a simple interface to access them from. This project allows you to get up and running with these tools in minutes and is designed to be easily accessible.
 
 
-# Getting started v0.2.2
+# Getting started v0.2.4
 
 ## IMPORTANT
 - PUBLIC TRACKERS ONLY. Private trackers don't like VPNs. Please wait for v0.3.0 if you intend to use private trackers.
@@ -98,7 +98,7 @@ Ensure containarr's host has a static IP, and that ports ```80, 443``` are not e
 The default configuration should be suitable for most people. Advanced users may customize ```docker-compose.yml``` if they so choose - I don't care, I'm not a cop.
 
 1. ```git clone https://github.com/ray-rock/containarr``` or download the latest release.
-2. ```chown -R 2500:2500 containarr/data/```
+2. GNU/Linux only: ```chown -R 2500:2500 containarr/data/```
 3. Rename ```config/gluetun/vpn-config.env.sample``` to ```config/gluetun/vpn-config.env```
 4. Configure a VPN provider, login credentials, and servers in ```config/gluetun/vpn-config.env```.
     - See [gluetun wiki](https://github.com/qdm12/gluetun/wiki) for more info on configuring your vpn provider.
@@ -133,6 +133,7 @@ Please open an issue and I'll get on it!
 ### gluetun
 Thank you to [@qdm12](https://github.com/qdm12) for their work on [gluetun](https://github.com/qdm12/gluetun).
 
+
 ### linuxserver
 Thank you to [linuxserver.io](https://github.com/linuxserver) for their work on the docker containers used in this project.
 - [linuxserver/docker-qbittorrent](https://github.com/linuxserver/docker-qbittorrent)
@@ -141,9 +142,9 @@ Thank you to [linuxserver.io](https://github.com/linuxserver) for their work on 
 - [linuxserver/docker-prowlarr](https://github.com/linuxserver/docker-prowlarr)
 
 
-
 ### Radarr Sonarr, and Prowlarr
 Thank you to all who contribute to [radarr](https://github.com/Radarr/Radarr), [sonarr](https://github.com/Sonarr/Sonarr), and [prowlarr](https://github.com/Prowlarr/Prowlarr).
+
 
 ### deemix-docker
 Thank you to @Bockiii for their contributions to this project, and their work on [deemix-docker](https://gitlab.com/Bockiii/deemix-docker)

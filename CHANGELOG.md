@@ -2,12 +2,16 @@
 
 
 ## Contributors
-- @stevietv  ➡️  v0.2.3, #8
-- @Bockiii  ➡️  v0.1.1, #5
-- @ray-rock  ➡️  project creator.
+- @dukejones    v0.2.4, #31
+- @stevietv     v0.2.3, #8
+- @Bockiii      v0.1.1, #5
+- @ray-rock     project creator.
 
 
 ## What's new?
+### v0.2.4
+- Addressed issue #31
+
 ### v0.2.3
 - Addressed [this](https://github.com/ray-rock/containarr/pull/21#pullrequestreview-922297868) review, which was missed by @ray-rock before merging pr #21.
 
